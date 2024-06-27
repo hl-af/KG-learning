@@ -1,6 +1,7 @@
 import numpy as np
 import networkx as nx
 
+# 构建关系超图测试
 # 示例数据
 triples = [
     ['head1', 'relation1', 'tail1'],
