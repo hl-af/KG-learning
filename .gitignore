@@ -59,11 +59,15 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
-
+share
+checkpoints
+bin
+WN18RR
+.idea
 # Translations
 *.mo
 *.pot
-
+*.cfg
 # Django stuff:
 *.log
 local_settings.py
