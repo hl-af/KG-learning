@@ -14,6 +14,7 @@ class Reader:
         self.id2rel = dict()
         self.h2t = {}
         self.t2h = {}
+
         self.num_anomalies = 0
         self.triples = []
         self.start_batch = 0
@@ -91,7 +92,7 @@ class Reader:
     def read_triples(self):
         print('Read begin!')
         for file in ["train", "valid", "test"]:
-            with open(self.path, "r") as f:
+            with open(self.path + '/' + file + ".txt", "r") as f:
                 for line in f.readlines():
                     try:
                         head, rel, tail = line.strip().split("\t")
