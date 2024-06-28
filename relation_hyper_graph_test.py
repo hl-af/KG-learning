@@ -2,6 +2,22 @@ import numpy as np
 import networkx as nx
 
 # 构建关系超图测试
+"""
+File: relation_hyper_graph_test.py
+Author: huanglei
+Date: 2024-06-27
+
+Description:
+构建关系超图测试
+Inputs:
+- triples 原始图数组
+- embeddings 嵌入
+
+Outputs:
+feature_matrix 特征矩阵
+adjacency_matrix 邻接矩阵
+nodes 节点
+"""
 # 示例数据
 triples = [
     ['head1', 'relation1', 'tail1'],
