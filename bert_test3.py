@@ -133,38 +133,28 @@ def train(model, optimizer, train_loader, num_epochs):
             print(1)
             torch.save(model.state_dict(), 'bert.model')
 
-
-# 开始训练
-# train(model, optimizer, train_loader, NUM_EPOCHS)
-
-
 def test(model, optimizer, test_loader, num_epochs):
     model.load_state_dict(torch.load('bert.model'))
     model.eval()
+    predictions = []
     with torch.no_grad():
         for batch in test_loader:
             input_ids, attention_mask, labels = batch
             input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
 
             optimizer.zero_grad()
-            outputs = model(input_ids, attention_mask)
-            print(outputs)
+            outputs = model(input_ids, attention_mask) # 耗时多
+            predictions.extend(outputs.argmax(dim=-1).tolist())
+            print('输出标签:' + predictions)
     pass
 
 
 if __name__ == '__main__':
 
     path = os.path.join(root_path, 'data', 'WN18RR')
-    train_data = load_data(path + '/train.txt')
     valid_data = load_data(path + '/valid.txt')
-    test_data = load_data(path + '/test.txt')
 
     tokenizer = BertTokenizer.from_pretrained(os.path.join(root_path, 'checkpoints', 'bert-base-uncased'))
-
-    train_dataset = prepare_data(train_data,tokenizer)
-
-    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # 初始化模型和优化器
@@ -175,8 +165,12 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss()
 
     if RUN_TYPE == 'train':
+        train_data = load_data(path + '/train.txt')
+        train_dataset = prepare_data(train_data, tokenizer)
+        train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
         train(model, optimizer, train_loader, NUM_EPOCHS)
     else:
+        test_data = load_data(path + '/test.txt')
         test_dataset = prepare_data(test_data,tokenizer)
         test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
         test(model, optimizer, test_loader, num_epochs=NUM_EPOCHS)
