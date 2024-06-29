@@ -5,6 +5,7 @@ Date: 2024-06-29
 
 Description:
 集成test和train
+先运行RUN_TYPE=train生成模型（控制台输出两个1可以停止），再运行RUN_TYPE=test输出结果
 通过RUN_TYPE调整训练和test
     RUN_TYPE = train
     RUN_TYPE = test

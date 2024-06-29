@@ -85,7 +85,8 @@ instance/
 docs/_build/
 docs/_build/doctrees
 docs/_build/html
-
+bert.model
+widgetsnbextension.json
 # PyBuilder
 target/
 
