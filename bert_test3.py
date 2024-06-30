@@ -29,7 +29,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 from transformers import BertTokenizer
 
-RUN_TYPE = 'test'
+RUN_TYPE = 'train'
 
 # 设置一些超参数
 MAX_SEQ_LENGTH = 128
@@ -115,7 +115,7 @@ def train(model, optimizer, train_loader, num_epochs):
     # 不计算梯度
     with torch.no_grad():
         for batch in train_loader:
-            input_ids, attention_mask, labels = batch
+            input_ids, attention_mask, labels = batch # 32 x 128
             input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
 
             optimizer.zero_grad()

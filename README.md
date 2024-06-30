@@ -13,3 +13,5 @@ demo都是_test后缀
 | 2024-06-27  |lstm_test.py |lstm的demo |
 | 2024-06-28  |test_sc.ipynb |transE的demo |
 | 2024-06-30  |bert_test3.py |附带bert训练和测试的demo；修改结构 |
+| 2024-06-30  |CCA和CAGED流程图.drawio |添加两篇论文的流程图 |
+
