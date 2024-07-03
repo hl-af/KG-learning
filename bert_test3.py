@@ -145,7 +145,6 @@ def test(model, optimizer, test_loader, num_epochs):
             optimizer.zero_grad()
             outputs = model(input_ids, attention_mask) # 耗时多
             predictions.extend(outputs.argmax(dim=-1).tolist())
-            print('输出标签:' + predictions)
     pass
 
 
