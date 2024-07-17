@@ -26,10 +26,10 @@ if __name__ == '__main__':
     model = BertModel.from_pretrained(model_name)
 
     # 假设我们有一个句子
-    sentence = "This is a sample sentence."
+    sentence = "This is a sample sentence.This is a sample sentence.This is a sample sentence.This is a sample sentence.This is a sample sentence.This is a sample sentence.This is a sample sentence.This is a sample sentence."
     sentences = ['a','b','c']
     # 对句子进行编码
-    inputs = tokenizer(sentences, return_tensors='pt', padding=True, truncation=True, max_length=512)
+    inputs = tokenizer(sentence, return_tensors='pt', padding=True, truncation=True, max_length=512)
 
     # 将模型设置为评估模式
     model.eval()
